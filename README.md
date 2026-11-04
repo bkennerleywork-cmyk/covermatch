@@ -4,7 +4,11 @@
 
 A four-step life insurance quote and customisation funnel, built as a portfolio project with Vue 3, TypeScript and Tailwind CSS.
 
+**[Try the live demo](https://bkennerleywork-cmyk.github.io/covermatch/)** · **[Browse the components in Storybook](https://bkennerleywork-cmyk.github.io/covermatch/storybook/)**
+
 > **This is a demo.** CoverMatch is not an insurer or a broker and is not authorised by the FCA. Prices come from an illustrative model, nothing is an offer of insurance, and no data leaves the browser. The name and branding are fictional.
+
+![The quote step on desktop, with critical illness cover and waiver of premium added and the price summary beside them](docs/screenshots/step-3-quote.png)
 
 ## The journey
 
@@ -14,6 +18,17 @@ A four-step life insurance quote and customisation funnel, built as a portfolio 
 | 2. Your health | Answers nicotine and medical questions | Toggle cards, exclusive options, underwriting triage |
 | 3. Your quote | Adjusts cover, adds critical illness cover and waiver of premium | Real-time recalculation, per-add-on pricing, eligibility |
 | 4. Your details | Enters contact details and consent | Inline validation, loading, failure and retry, success, mock CRM dispatch |
+
+<table>
+  <tr>
+    <td width="62%"><img src="docs/screenshots/step-4-validation.png" alt="The lead form showing inline validation errors and a notice asking people to use made-up details" /></td>
+    <td><img src="docs/screenshots/mobile-quote.png" alt="The quote step on a phone, with the price pinned to the bottom of the screen" /></td>
+  </tr>
+  <tr>
+    <td>Inline validation on the lead form</td>
+    <td>The price stays in view on a phone</td>
+  </tr>
+</table>
 
 Two developer views are built into the page: one shows the live `dataLayer` stream, and the success screen shows the CRM payload.
 
@@ -30,7 +45,7 @@ To see the failure state, submit the form with any address ending in `@fail.test
 | Tests | Vitest, Vue Test Utils, jsdom |
 | Components | Storybook |
 | Quality | ESLint and `vue-tsc` |
-| Delivery | Docker, Docker Compose, GitHub Actions, GitLab CI |
+| Delivery | Docker, Docker Compose, GitHub Actions, GitHub Pages, GitLab CI |
 
 ## Getting started
 
@@ -138,6 +153,10 @@ The same checks are defined for two platforms: `.github/workflows/ci.yml` for Gi
 2. **test:** `vitest run` with coverage and JUnit reports, which GitLab shows on the merge request
 3. **build:** the production app and static Storybook, kept as artifacts
 
+## Deployment
+
+`.github/workflows/deploy.yml` publishes the app and Storybook to GitHub Pages after CI passes on `main`, so a failing commit never goes live. The demo asks search engines not to index it, because a fictional insurance quote should not turn up when someone is looking for real cover.
+
 ## What a live version would need
 
 - A real rating engine on the server. Client-side prices are for illustration only.
@@ -145,3 +164,7 @@ The same checks are defined for two platforms: `.github/workflows/ci.yml` for Gi
 - Real terms, a privacy notice, and consent records held on the server.
 - A consent banner that controls whether tags load at all.
 - Server-side validation and spam protection on the lead endpoint.
+
+## Licence
+
+[MIT](LICENSE)
