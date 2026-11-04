@@ -602,6 +602,10 @@ onBeforeUnmount(() => {
               <p class="mt-3 text-lg text-ink-soft">
                 We will save this price and arrange a call to talk it through. There is no obligation to buy.
               </p>
+              <p class="mt-4 flex items-start gap-2 rounded-lg bg-marigold-soft p-3.5 text-sm" data-testid="demo-notice">
+                <Info class="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+                This is a demo, so please use made-up details. Nothing you enter leaves this page.
+              </p>
 
               <div
                 v-if="submitStatus === 'failed'"
