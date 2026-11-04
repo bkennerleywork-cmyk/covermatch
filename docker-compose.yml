@@ -1,0 +1,33 @@
+services:
+  app:
+    build:
+      context: .
+      target: dev
+    ports:
+      - '5173:5173'
+    volumes:
+      - .:/app
+      # Keeps the image's Linux node_modules instead of the host's.
+      - /app/node_modules
+
+  storybook:
+    profiles: [tools]
+    build:
+      context: .
+      target: dev
+    command: npm run storybook -- --ci --host 0.0.0.0
+    ports:
+      - '6006:6006'
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  test:
+    profiles: [tools]
+    build:
+      context: .
+      target: dev
+    command: npm run test:run
+    volumes:
+      - .:/app
+      - /app/node_modules
