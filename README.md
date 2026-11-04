@@ -1,5 +1,7 @@
 # CoverMatch
 
+[![CI](https://github.com/bkennerleywork-cmyk/covermatch/actions/workflows/ci.yml/badge.svg)](https://github.com/bkennerleywork-cmyk/covermatch/actions/workflows/ci.yml)
+
 A four-step life insurance quote and customisation funnel, built as a portfolio project with Vue 3, TypeScript and Tailwind CSS.
 
 > **This is a demo.** CoverMatch is not an insurer or a broker and is not authorised by the FCA. Prices come from an illustrative model, nothing is an offer of insurance, and no data leaves the browser. The name and branding are fictional.
@@ -28,7 +30,7 @@ To see the failure state, submit the form with any address ending in `@fail.test
 | Tests | Vitest, Vue Test Utils, jsdom |
 | Components | Storybook |
 | Quality | ESLint and `vue-tsc` |
-| Delivery | Docker, Docker Compose, GitLab CI |
+| Delivery | Docker, Docker Compose, GitHub Actions, GitLab CI |
 
 ## Getting started
 
@@ -130,7 +132,7 @@ jsdom has no layout engine and does not run CSS transitions or the native dialog
 
 ## CI pipeline
 
-`.gitlab-ci.yml` runs three stages on merge requests and branches:
+The same checks are defined for two platforms: `.github/workflows/ci.yml` for GitHub Actions, and `.gitlab-ci.yml` for GitLab. The GitLab version runs three stages on merge requests and branches:
 
 1. **quality:** `eslint` and `vue-tsc`
 2. **test:** `vitest run` with coverage and JUnit reports, which GitLab shows on the merge request
